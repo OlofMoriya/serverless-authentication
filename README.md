@@ -1,7 +1,10 @@
 # ServerlessAuthentication
 
-GenerateToken - generates a token from basic auth
-AddUser - Creates a user in the system. 
+## GenerateToken 
+- generates a token from basic auth
+
+## AddUser 
+- Creates a user in the system. 
 
 Link to postman collection for api calls
 https://www.getpostman.com/collections/eaa678e1962026d66e4e
