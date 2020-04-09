@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessAuthentication", "ServerlessAuthentication\ServerlessAuthentication.csproj", "{E34A9DD0-5784-4AED-8EDA-F1AA362C9A22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessAuthentication.Services", "ServerlessAuthentication.Services\ServerlessAuthentication.Services.csproj", "{385D63CE-17F5-460B-8361-AECAD91A2ABF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessAuthentication.Model", "ServerlessAuthentication.Model\ServerlessAuthentication.Model.csproj", "{FBA4EF27-CA7A-4266-9416-1B45DB80FC85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E34A9DD0-5784-4AED-8EDA-F1AA362C9A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E34A9DD0-5784-4AED-8EDA-F1AA362C9A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E34A9DD0-5784-4AED-8EDA-F1AA362C9A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E34A9DD0-5784-4AED-8EDA-F1AA362C9A22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{385D63CE-17F5-460B-8361-AECAD91A2ABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{385D63CE-17F5-460B-8361-AECAD91A2ABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{385D63CE-17F5-460B-8361-AECAD91A2ABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{385D63CE-17F5-460B-8361-AECAD91A2ABF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBA4EF27-CA7A-4266-9416-1B45DB80FC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA4EF27-CA7A-4266-9416-1B45DB80FC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA4EF27-CA7A-4266-9416-1B45DB80FC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBA4EF27-CA7A-4266-9416-1B45DB80FC85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {941FD733-CBBD-4754-BC58-98DB8F00AD0B}
+	EndGlobalSection
+EndGlobal
