@@ -14,7 +14,6 @@ Todo:
 
 - [ ] General cleanup.
 - [ ] Add some authentication and limitation to AddUser.
-- [ ] Force AddUser to go through user service to create the user. 
 - [ ] Use a key chain for token secret.
 - [ ] Add configuration for token-specifics such as issuer and audience.
 - [ ] Handle user creation with correct status.
