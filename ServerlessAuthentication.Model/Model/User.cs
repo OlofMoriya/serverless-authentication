@@ -1,6 +1,5 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 using ServerlessAuthentication.BasicAuthentication;
-using System.Collections.Generic;
 
 namespace ServerlessAuthentication.Model.Model
 {

@@ -7,7 +7,6 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-//Nuget Microsoft.Azure.WebJobs.Extensions.Storage
 
 namespace ServerlessAuthentication.Services
 {
@@ -16,10 +15,7 @@ namespace ServerlessAuthentication.Services
         private static readonly RNGCryptoServiceProvider random = new RNGCryptoServiceProvider();
         private readonly CloudTable cloudTable;
 
-        public UserService(CloudTableClient cloudTableClient)
-        {
-            this.cloudTable = cloudTableClient.GetTableReference("users");
-        }
+        public UserService(CloudTableClient cloudTableClient) => cloudTable = cloudTableClient.GetTableReference("users");
 
         public async Task<User> AuthenticateUserAsync(string email, string password)
         {
@@ -32,7 +28,7 @@ namespace ServerlessAuthentication.Services
             return null;
         }
 
-        public (User, string) CreateUser(UserData userData)
+        public async Task<(User, string)> CreateUserAsync(UserData userData)
         {
             _ = userData.ValidateData() ? true : throw new ArgumentException("UserData failed on validation.");
 
@@ -55,7 +51,18 @@ namespace ServerlessAuthentication.Services
             var hashedPassword = HashPassword(password, salt);
             user.Password = hashedPassword;
 
-            return (user, password);
+            user.RowKey = $"U{user.Email}";
+            user.PartitionKey = $"U{user.Email.Substring(0, 2)}";
+                
+            var userInsertOperation = TableOperation.Insert(user);
+            var userInserResult = await cloudTable.ExecuteAsync(userInsertOperation);
+            
+            if (userInserResult.HttpStatusCode <= 300)
+            {
+                return (user, password);
+            }
+
+            return (null, null);
         }
 
         public UserData CreateUserData(User user)
@@ -77,7 +84,7 @@ namespace ServerlessAuthentication.Services
 
         private string HashPassword(string password, object salt)
         {
-            var saltedPassword = $"{password}{salt}"; // Should have another configuration salt from config file
+            var saltedPassword = $"{password}{salt}";
             var hashedPassword = new SHA256Managed().ComputeHash(Encoding.UTF8.GetBytes(saltedPassword));
             return Encoding.UTF8.GetString(hashedPassword);
         }

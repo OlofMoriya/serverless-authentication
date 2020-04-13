@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.WindowsAzure.Storage.Table;
 using Newtonsoft.Json;
 using ServerlessAuthentication.Model.InputModel;
 using ServerlessAuthentication.Services;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace ServerlessAuthentication
 {
@@ -19,15 +15,11 @@ namespace ServerlessAuthentication
     {
         private readonly IUserService userService;
 
-        public UserAdministration(IUserService userService)
-        {
-            this.userService = userService;
-        }
+        public UserAdministration(IUserService userService) => this.userService = userService;
 
         [FunctionName("AddUser")]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = "AddUser")] HttpRequest req,
-            [Table("users")] CloudTable userTable,
             ILogger log
         )
         {
@@ -40,15 +32,9 @@ namespace ServerlessAuthentication
                 return new BadRequestResult();
             }
 
-            var (user, password) = userService.CreateUser(userData);
+            var (user, password) = await userService.CreateUserAsync(userData);
 
-            user.RowKey = $"U{user.Email}";
-            user.PartitionKey = $"U{user.Email.Substring(0, 2)}";
-
-            var userInsertOperation = TableOperation.Insert(user);
-            var userInserResult = await userTable.ExecuteAsync(userInsertOperation);
-            //Handle confict with correct status
-            if (userInserResult.HttpStatusCode >= 300)
+            if (user is null)
             {
                 return new EmptyResult();
             }

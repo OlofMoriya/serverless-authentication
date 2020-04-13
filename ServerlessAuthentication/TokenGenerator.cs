@@ -19,8 +19,8 @@ namespace ServerlessAuthentication
     public class TokenGenerator
     {
         private const int daysValid = 1;
-        private const string issuer = "token.fskab.se";
-        private const string authority = "token.fskab.se";
+        private const string issuer = "Issuer";
+        private const string authority = "Authority";
         private const string symetricSecurity = "Veeeery sneakyyy";
 
         private readonly IBasicAuthenticationService<IBasicAuthenticate> basicAuthenticationService;

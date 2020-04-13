@@ -16,4 +16,7 @@ Todo:
 - [ ] Add some authentication and limitation to AddUser.
 - [ ] Force AddUser to go through user service to create the user. 
 - [ ] Use a key chain for token secret.
-- [ ] Add configuration for token-specifics such as issuer and audience
+- [ ] Add configuration for token-specifics such as issuer and audience.
+- [ ] Handle user creation with correct status.
+- [ ] Add a pepper to the password hash.
+- [ ] Implement ValidateData in UserData.

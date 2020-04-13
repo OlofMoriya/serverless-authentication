@@ -1,7 +1,4 @@
-﻿using ServerlessAuthentication.Model.Model;
-using System.Collections.Generic;
-
-namespace ServerlessAuthentication.Model.InputModel
+﻿namespace ServerlessAuthentication.Model.InputModel
 {
     public class UserData : IValidateData
     {
@@ -9,10 +6,6 @@ namespace ServerlessAuthentication.Model.InputModel
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Subject { get; set; }
-
-        public bool ValidateData()
-        {
-            return true;
-        }
+        public bool ValidateData() => true;
     }
 }
