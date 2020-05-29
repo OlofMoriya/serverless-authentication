@@ -29,8 +29,7 @@ namespace ServerlessAuthentication
 
         [FunctionName("GenerateToken")]
         public async Task<IActionResult> Run (
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "GenerateToken")] HttpRequest request,
-            ILogger log
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "GenerateToken")] HttpRequest request
         )
         {
             var user = await basicAuthenticationService.AuthenticateAsync(request);

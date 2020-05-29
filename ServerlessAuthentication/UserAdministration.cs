@@ -39,7 +39,8 @@ namespace ServerlessAuthentication
                 return new EmptyResult();
             }
 
-            return new CreatedResult("Storage", new { User = userService.CreateUserData(user), Password = password });
+            var storedUser = userService.CreateUserData(user);
+            return new CreatedResult("Storage", new { User = storedUser, Password = password });
         }
     }
 }
